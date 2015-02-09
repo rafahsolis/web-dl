@@ -55,8 +55,8 @@ def rnd1000(filename):
 def main():
     if len(sys.argv) == 2:
         multipleUrldl(sys.argv[1])
-    elif sys.argv[2] == "--rnd1000":
-        rnd1000(sys.argv[1])
+        if sys.argv[2] == "--rnd1000":
+            rnd1000(sys.argv[1])
     else:
         print "ussage: python web-dl filename {--rnd1000; this parameter will download a random 1000 pages from the " \
               "26900 contained in classification.json adding a json field html:value} "
