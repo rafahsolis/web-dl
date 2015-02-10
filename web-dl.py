@@ -29,12 +29,13 @@ def rnd1000(filename):
     else:
         newfilename = newfilename + ".json"
 
-    sample = random.sample(range(0, 26908), 1000)
+    sample = random.sample(range(0, 26909), 1000)
     counter = 0
     urlsfile = open(filename, 'r')
 
     with open(newfilename, 'w') as resultfile:
         data = json.load(urlsfile)
+        resultfile.write("[")
         for i in data:
             if counter in sample:
                 try:
@@ -46,9 +47,11 @@ def rnd1000(filename):
 
                 finally:
                     json.dump(i, resultfile)
-                    resultfile.write('\n')
-
+                    resultfile.write(',\n')
             counter += 1
+
+        json.dump({"Primary Category": "", "Secondary Category": "", "Title": "", "URL": ""}, resultfile)
+        resultfile.write(']')
         urlsfile.close()
 
 
